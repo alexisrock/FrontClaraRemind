@@ -1,0 +1,49 @@
+
+
+
+<div class="container mt-3">
+  @if (  recordatoriosResponse.length > 0) {
+
+    <div class="list-group" *ngFor="let item of recordatoriosResponse; let i = index">
+      <div class="list-group-item list-group-item-action ">
+
+
+        <div class="row">
+          <div class="col-lg-7  col-md-8 col-ms-8 text-left">
+            <p class="text-capitalize fs-3 fw-semibold">{{ item.descripcion }}</p>
+            <p class="text-body-light"><b>Fecha:</b> {{ item.fechaRegistro | date:'dd/MM/yyyy' }} -  hora: {{ item.hora}} </p>
+
+
+          </div>
+          <div class="col-lg-2  col-md-1 col-ms-1 ">
+
+          </div>
+          <div class="col-lg-3  col-md-2 col-ms-2">
+            <div class="row">
+
+
+
+              <div class="col-md-1 col-lg-1">
+
+              </div>
+              <div class="col-md-1 col-lg-1 "></div>
+              <div class="col-md-1 col-lg-1">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br>
+    </div>
+
+
+  }@else{
+    <div class="alert alert-light" role="alert">
+      No tiene recordatorios por el momento
+    </div>
+
+  }
+
+</div>
