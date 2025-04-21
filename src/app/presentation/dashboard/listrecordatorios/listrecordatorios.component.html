@@ -1,49 +1,60 @@
-
-
-
 <div class="container mt-3">
-  @if (  recordatoriosResponse.length > 0) {
 
-    <div class="list-group" *ngFor="let item of recordatoriosResponse; let i = index">
-      <div class="list-group-item list-group-item-action ">
+  <button class="btn btn-outline-primary mb-2" (click)="RedirectCreate()">Recordatorio</button>
 
+  @if ( recordatoriosResponse.length > 0) {
 
-        <div class="row">
-          <div class="col-lg-7  col-md-8 col-ms-8 text-left">
-            <p class="text-capitalize fs-3 fw-semibold">{{ item.descripcion }}</p>
-            <p class="text-body-light"><b>Fecha:</b> {{ item.fechaRegistro | date:'dd/MM/yyyy' }} -  hora: {{ item.hora}} </p>
+  <div class="list-group" *ngFor="let item of recordatoriosResponse; let i = index">
+    <div class="list-group-item list-group-item-action ">
 
 
+      <div class="row">
+        <div class="col-lg-7  col-md-8 col-ms-8 text-left">
+          <p class="text-capitalize fs-3 fw-semibold">{{ item.descripcion }}</p>
+          <p class="text-body-light"><b>Fecha:</b> {{ item.fechaRegistro | date:'dd/MM/yyyy' }} - hora: {{ item.hora}}
+          </p>
+
+
+        </div>
+        <div class="col-lg-2  col-md-1 col-ms-1 ">
+
+        </div>
+        <div class="col-lg-4  col-md-3 col-ms-3">
+          <div class="row d-grid">
+            <button class="btn rounded-pill" (click)="UpdateCkeckRecordatorio(item.id)" [class.btn-primary]="!item.checkRecordatorio"
+              [class.btn-secondary]="item.checkRecordatorio" [disabled]="item.checkRecordatorio">
+              @if (item.checkRecordatorio!==true) { <i class="bi bi-check"></i> Hecho }@else{ Completado}
+            </button>
           </div>
-          <div class="col-lg-2  col-md-1 col-ms-1 ">
 
-          </div>
-          <div class="col-lg-3  col-md-2 col-ms-2">
-            <div class="row">
-
-
-
-              <div class="col-md-1 col-lg-1">
-
-              </div>
-              <div class="col-md-1 col-lg-1 "></div>
-              <div class="col-md-1 col-lg-1">
-
+          <div class="row mt-2">
+            <div class="col ">
+              <div class="form-check form-switch  ">
+                <input class="form-check-input custom-radio-lg" aria-checked="false" (click)="updateEstado(item.id, item.estado)" type="checkbox" role="switch" [checked]="item.estado">
+                <label class="form-check-label" for="switchCheckDefault">&nbsp;   @if (  item.estado){ Activo}@else{
+                  Inactivo}</label>
               </div>
             </div>
           </div>
-        </div>
 
+          <div class="row mt-2">
+
+            <button class="btn btn-outline-primary rounded-pill" (click)="DeleteRecordatorio(item.id)"><i class="bi bi-trash3"></i></button>
+          </div>
+        </div>
       </div>
-      <br>
+
     </div>
+    <br>
+  </div>
 
 
   }@else{
-    <div class="alert alert-light" role="alert">
-      No tiene recordatorios por el momento
-    </div>
+  <div class="alert alert-light" role="alert">
+    No tiene recordatorios por el momento
+  </div>
 
   }
 
 </div>
+<app-loadding></app-loadding>

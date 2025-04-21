@@ -1,1 +1,112 @@
-<p>create-recordatorio works!</p>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col col-1 "></div>
+    <div class="col">
+      <div class="card text-bg-light mt-5 rounded-4">
+        <div class="card-header rounded-top-4 text-bg-primary">
+
+
+          <label for="" class="display-6">Crear Recordatorio</label>
+
+        </div>
+
+        <div class="card-body">
+          <div class="row mt-2 p-2">
+            <div class="col-lg-3 col-md-2 col-ms-2"></div>
+            <div class="col-lg-7 col-md-8 col-ms-8">
+              <div *ngIf="loading" class="alert alert-success" role="alert">
+                {{message}}
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-ms-2"></div>
+          </div>
+
+          <form (submit)="SendForm()" [formGroup]="fg">
+
+            <div class="row mt-2 p-2">
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+              <div class="col-lg-7 col-md-8 col-ms-8">
+                <label for="Descripcion"  class="form-label">Descripcion</label>
+                <input type="text" formControlName="Descripcion" class="form-control form-control-lg" placeholder="Ingresa una descripcion">
+              </div>
+              <div *ngIf="fg.get('Descripcion')?.invalid && fg.get('Descripcion')?.touched" class="colorRed">
+                La  descripcion es obligatoria.
+              </div>
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+            </div>
+            <div class="row mt-2 p-2">
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+              <div class="col-lg-7 col-md-8 col-ms-8">
+                <label for="Descripcion"  class="form-label">Fecharegistro</label>
+                <input type="date" formControlName="Fecharegistro" class="form-control form-control-lg">
+              </div>
+              <div *ngIf="fg.get('Fecharegistro')?.invalid && fg.get('Fecharegistro')?.touched" class="colorRed">
+                la fecha es obligatoria.
+              </div>
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+            </div>
+            <div class="row mt-2 p-2">
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+              <div class="col-lg-7 col-md-8 col-ms-8">
+                <label for="Descripcion"  class="form-label">Hora</label>
+                <input type="time" formControlName="Hora" class="form-control form-control-lg" placeholder="Ingresa una descripcion">
+              </div>
+              <div *ngIf="fg.get('Hora')?.invalid && fg.get('Hora')?.touched" class="colorRed">
+                la fecha es obligatoria.
+              </div>
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+            </div>
+
+            <div class="row mt-2 p-2">
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+              <div class="col-lg-7 col-md-8 col-ms-8 text-left">
+                <div class="form-check form-check-reverse form-switch ">
+                  <input class="form-check-input custom-radio-lg"  aria-checked="false" formControlName="Esrecurente"  type="checkbox" role="switch"  >
+                  <label class="form-check-label"   for="Esrecurente"   >Repetir recordatorio</label>&nbsp;&nbsp;&nbsp;
+                </div>
+              </div>
+              <div *ngIf="fg.get('Hora')?.invalid && fg.get('Hora')?.touched" class="colorRed">
+                la fecha es obligatoria.
+              </div>
+              <div class="col-lg-3 col-md-2 col-ms-2"></div>
+            </div>
+            <div class="row mt-2 p-2">
+              <div class="col-lg-3  col-md-2 col-ms-2"></div>
+              <div class="col-lg-5  col-md-4 col-ms-4 text-center d-grid ">
+                <button type="button" class="btn btn-outline-primary btn-lg d-grid  rounded-pill" (click)="RedirectCreate()">Cancelar</button>
+              </div>
+              <div class="col-lg-5  col-md-4 col-ms-4 text-center d-grid ">
+                <input type="submit" class="btn btn-primary btn-lg d-grid  rounded-pill" value="Guardar">
+              </div>
+
+            </div>
+
+
+
+
+          </form>
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div class="col col-1"></div>
+
+  </div>
+
+
+
+
+</div>
+
+<app-loadding></app-loadding>

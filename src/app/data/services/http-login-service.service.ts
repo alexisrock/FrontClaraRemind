@@ -21,15 +21,4 @@ export class HttpLoginServiceService implements LoginService {
 
     return this.httpclient.post<LoginResponse>(this.urlBase + '/login/create', request, { headers });
   }
-
-
-  GetRecordatoriosByIdUsuario(idUsuario: number|undefined):Observable<ListRecordatoriosResponse> {
-    let  headers = new HttpHeaders({
-      'Content-Type': 'application/json'    });
-
-    return this.httpclient.get<ListRecordatoriosResponse>(this.urlBase + `/recordatorio/getrecordatoriosbyid/${idUsuario}`,   { headers });
-  }
-
-
-
 }
